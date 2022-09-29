@@ -2,15 +2,19 @@
 package hu.petrik.helloworld;
 import hu.petrik.helloworld.Bejegyzesek.Bejegyzesek;
 import java.util.List;
-
-import java.time.LocalDateTime;
+import java.io.IOException;;
 public class Main {
     public static void main(String[] args) {
         Bejegyzesek bejegyzesLista = new Bejegyzesek();
-        Bejegyzes b1 = new Bejegyzes("Próba István","A régi szép idől!.");
-        bejegyzesLista.addBejegyzes(b1);
         bejegyzesLista.kiir();
-        bejegyzesLista.AdatBekeres();
+        bejegyzesLista.Adatbekeres();
+        try {
+            bejegyzesLista.fileBeolvasas("bejegyzesek.csv");
+        } catch (IOException e) {
+            System.err.println("Hiba történt a fájl beolvasása során.");
+        }
+        System.out.println("-------------------------");
+        bejegyzesLista.likeOsztas();
         bejegyzesLista.kiir();
     }
 }
