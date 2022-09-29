@@ -3,9 +3,8 @@ import hu.petrik.helloworld.Bejegyzes;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.Scanner;public class Bejegyzesek {
     private List<Bejegyzes> bejegyzesek;
 
@@ -91,4 +90,51 @@ import java.util.Scanner;public class Bejegyzesek {
             }
         }
     }
+    public void TartalomModsitas() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\nKérlek add meg a tartalmat:");
+        String tartalom = sc.nextLine();
+        this.bejegyzesek.get(1).setTartalom(tartalom);
+    }
+
+    public int likeMax(){
+        int max = 0;
+        for (int i = 0; i < this.bejegyzesek.size(); i++) {
+            if (this.bejegyzesek.get(i).getLikeok()>this.bejegyzesek.get(max).getLikeok()){
+                max = i;
+            }
+        }
+        return this.bejegyzesek.get(max).getLikeok();
+    }
+    public boolean nagyobb(){
+        boolean van = false;
+        for (Bejegyzes b :this.bejegyzesek) {
+            if (b.getLikeok()>35){
+                van = true;
+            }
+        }
+        return van;
+    }
+    public int kisebb(){
+        int count =0;
+        for (Bejegyzes b :this.bejegyzesek) {
+            if (b.getLikeok()<15){
+                count++;
+            }
+        }
+        return count;
+    }
+    static class Hasonlito implements Comparator<Bejegyzes> {
+        @Override
+        public int compare(Bejegyzes b1, Bejegyzes b2) {
+            return b2.getLikeok() - b1.getLikeok();
+        }
+    }
+    public void Rendezes() {
+        List<Bejegyzes> rendezett = this.bejegyzesek.stream().sorted(new Hasonlito()).collect(Collectors.toList());
+        for (int i = 0; i < rendezett.size(); i++) {
+            System.out.println(rendezett.get(i) + "\n");
+        }
+    }
 }
+

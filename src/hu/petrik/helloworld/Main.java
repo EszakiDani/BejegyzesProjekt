@@ -15,6 +15,13 @@ public class Main {
         }
         System.out.println("-------------------------");
         bejegyzesLista.likeOsztas();
+        bejegyzesLista.TartalomModsitas();
+        System.out.println("\nA végleges lista:\n");
         bejegyzesLista.kiir();
+        System.out.printf("\nA legnépszerűbb: %d",bejegyzesLista.likeMax());
+        System.out.printf("\n%s nagyobb mint 64 like.\n",(bejegyzesLista.nagyobb() ? "Van" : "Nincs"));
+        System.out.printf("\nEnnyi kisebb van mint 15 like: %d \n",bejegyzesLista.kisebb());
+        System.out.println("\nRendezett lista:\n");
+        bejegyzesLista.Rendezes();
     }
 }

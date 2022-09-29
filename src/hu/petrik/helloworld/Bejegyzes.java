@@ -52,7 +52,7 @@ public class Bejegyzes {
         this.likeok++;
     }
 
-    boolean isContentEdited = false;
+    private boolean isContentEdited = false;
 
     @Override
     public String toString() {
