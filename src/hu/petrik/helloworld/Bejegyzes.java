@@ -51,16 +51,20 @@ public class Bejegyzes {
     public void like() {
         this.likeok++;
     }
+
     boolean isContentEdited = false;
+
     @Override
     public String toString() {
         if (isContentEdited) {
-            return String.format("%s – %d - %s\nSzerkesztve: %s\n%s",
-                    this.szerzo, this.likeok, this.letrejott.toLocalDate(),
-                    this.szerkesztve.toLocalDate(), this.tartalom);
+            return String.format("%s – %d - %s\nSzerkesztve: %s\n%s", this.szerzo, this.likeok,
+                    this.letrejott.toLocalDate()+" "+this.letrejott.toLocalTime().getHour()+":"+this.letrejott.toLocalTime().getMinute(),
+                    this.szerkesztve.toLocalDate()+" "+this.szerkesztve.toLocalTime().getHour()+":"+this.szerkesztve.toLocalTime().getMinute(),
+                    this.tartalom);
         } else {
             return String.format("%s – %d - %s\nSzerkesztve: %s\n%s",
-                    this.szerzo, this.likeok, this.letrejott.toLocalDate(),
+                    this.szerzo, this.likeok,
+                    this.letrejott.toLocalDate()+" "+this.letrejott.toLocalTime().getHour()+":"+this.letrejott.toLocalTime().getMinute(),
                     "A létrehozást követően még nem volt.", this.tartalom);
         }
     }
